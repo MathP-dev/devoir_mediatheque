@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un média</title>
+</head>
+<body>
+    <h1>Ajouter un média</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="type_media">Type de média:</label>
+            <select name="type_media" id="type_media" required>
+                <option value="livre">Livre</option>
+                <option value="dvd">DVD</option>
+                <option value="cd">CD</option>
+                <option value="jeu">Jeu de Plateau</option>
+            </select>
+        </div>
+        <div>
+            <label for="name">Nom:</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div id="auteur-field" style="display: none;">
+            <label for="auteur">Auteur:</label>
+            <input type="text" name="auteur" id="auteur">
+        </div>
+        <div id="realisateur-field" style="display: none;">
+            <label for="realisateur">Réalisateur:</label>
+            <input type="text" name="realisateur" id="realisateur">
+        </div>
+        <div id="artiste-field" style="display: none;">
+            <label for="artiste">Artiste:</label>
+            <input type="text" name="artiste" id="artiste">
+        </div>
+        <div id="createur-field" style="display: none;">
+            <label for="createur">Créateur:</label>
+            <input type="text" name="createur" id="createur">
+        </div>
+        <button type="submit">Ajouter</button>
+    </form>
+    <a href="{% url 'profile' %}">Retourner au profil</a>
+
+    <script>
+        document.getElementById('type_media').addEventListener('change', function() {
+            var typeMedia = this.value;
+            document.getElementById('auteur-field').style.display = 'none';
+            document.getElementById('realisateur-field').style.display = 'none';
+            document.getElementById('artiste-field').style.display = 'none';
+            document.getElementById('createur-field').style.display = 'none';
+
+            if (typeMedia === 'livre') {
+                document.getElementById('auteur-field').style.display = 'block';
+            } else if (typeMedia === 'dvd') {
+                document.getElementById('realisateur-field').style.display = 'block';
+            } else if (typeMedia === 'cd') {
+                document.getElementById('artiste-field').style.display = 'block';
+            } else if (typeMedia === 'jeu') {
+                document.getElementById('createur-field').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

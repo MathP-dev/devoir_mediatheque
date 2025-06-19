@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des membres</title>
+</head>
+<body>
+    <h1>Liste des membres</h1>
+    <ul>
+        {% for membre in membres %}
+            <li>{{ membre.name }} - <a href="{% url 'mettre_a_jour_membre' membre.id %}">Mettre à jour</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'profile' %}">Retourner au profil</a>
+</body>
+</html>

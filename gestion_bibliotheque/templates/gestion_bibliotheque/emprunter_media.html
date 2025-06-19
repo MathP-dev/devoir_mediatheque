@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Emprunter un média</title>
+</head>
+<body>
+    <h1>Emprunter un média</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>Médias disponibles</h2>
+    <ul>
+        {% for media in medias_disponibles %}
+            <li>{{ media.name }}</li>
+        {% empty %}
+            <li>Aucun média disponible pour l'instant.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Emprunter le média : {{ media.name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="emprunteur">Emprunteur:</label>
+        <select name="emprunteur" id="emprunteur" required>
+            {% for emprunteur in emprunteurs %}
+                <option value="{{ emprunteur.id }}">{{ emprunteur.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Emprunter</button>
+    </form>
+    <a href="{% url 'profile' %}">Retourner au profil</a>
+</body>
+</html>

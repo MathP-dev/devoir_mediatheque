@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil</title>
+</head>
+<body>
+    <h1>Bienvenue sur votre profil</h1>
+    <p>Vous êtes connecté en tant que bibliothécaire.</p>
+    <ul>
+        <li><a href="{% url 'ajouter_membre' %}">Créer un membre-emprunteur</a></li>
+        <li><a href="{% url 'liste_membres' %}">Afficher la liste des membres</a></li>
+        <li><a href="{% url 'liste_medias' %}">Afficher la liste des médias</a></li>
+        <li><a href="{% url 'emprunter_media' media_id=1 %}">Créer un emprunt pour un média disponible</a></li>
+        <li><a href="{% url 'ajouter_media' %}">Ajouter un média</a></li>
+        <li><a href="{% url 'retourner_emprunt' emprunt_id=1 %}">Retourner un emprunt</a></li>
+    </ul>
+</body>
+</html>

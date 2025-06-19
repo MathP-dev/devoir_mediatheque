@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Retourner un emprunt</title>
+</head>
+<body>
+    <h1>Retourner un emprunt</h1>
+
+    <p>Vous êtes sur le point de retourner l'emprunt suivant :</p>
+
+    <ul>
+        <li><strong>Média :</strong> {{ emprunt.media.name }}</li>
+        <li><strong>Emprunteur :</strong> {{ emprunt.emprunteur.name }}</li>
+        <li><strong>Date d'emprunt :</strong> {{ emprunt.date_emprunt }}</li>
+    </ul>
+
+    <p>Êtes-vous sûr de vouloir retourner cet emprunt ?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Retourner</button>
+    </form>
+    <a href="{% url 'profile' %}">Retourner au profil</a>
+</body>
+</html>

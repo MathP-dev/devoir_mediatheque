@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mettre à jour un membre</title>
+</head>
+<body>
+    <h1>Mettre à jour un membre</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Mettre à jour</button>
+    </form>
+    <a href="{% url 'profile' %}">Retourner au profil</a>
+</body>
+</html>
