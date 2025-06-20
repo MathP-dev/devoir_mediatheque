@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
-
 from .forms import MembreForm, MediaForm
 from .models import Livre, DVD, CD, JeuDePlateau, Emprunteur, Emprunt, Media
 from django.contrib import messages
@@ -78,8 +77,8 @@ def mettre_a_jour_membre(request, membre_id):
 @login_required
 def emprunter_media(request, media_id):
     media = get_object_or_404(Media, id=media_id)
-    medias_disponibles = Media.objects.filter(disponible=True)  # Récupérer les médias disponibles
-    emprunteurs = Emprunteur.objects.all()  # Récupérer tous les emprunteurs
+    medias_disponibles = Media.objects.filter(disponible=True)
+    emprunteurs = Emprunteur.objects.all()
 
     if request.method == 'POST':
         emprunteur_id = request.POST.get('emprunteur')
